@@ -96,3 +96,68 @@ Aero-Car-Renting-Marketplace/
     middleware/           # auth + multer
     models/               # User, Car, Booking
     routes/               # user / owner / booking routes
+```
+
+
+---
+
+## Run Locally
+1) Clone and install:
+- git clone https://github.com/AbdurRafey237/Aero-Car-Renting-Marketplace/tree/main
+- cd Aero-Car-Renting-Marketplace
+
+2) Install server dependencies:
+- cd server
+- npm install
+
+3) Install client dependencies:
+- cd ../client
+- npm install
+
+4) Configure environment variables:
+- Change the server's .env file (hidden) to reflect your MongoDB UID and ImageKit keys & URL-endpoint.
+
+5) Run backend:
+- cd ../server
+- npm run dev
+
+6) Run frontend:
+- cd ../client
+- npm run dev
+
+By default, the frontend is at http://localhost:5173 and the backend at http://localhost:3000.
+
+---
+
+## Core API Routes
+These are the routes most commonly used by the client and owner dashboard.
+
+User routes:
+- GET /api/user/cars — fetch cars for listing pages
+- GET /api/user/data — fetch current user data (requires auth)
+
+Owner routes:
+- POST /api/owner/add-car — add a new car (multipart form-data with image + carData)
+- Owner management routes are exposed under /api/owner/...
+
+Booking routes:
+- Booking endpoints are exposed under /api/booking/...
+
+---
+
+## Uploads and Images
+Whereas local images may be used for UI assets, car listing images are handled by:
+- Multer to accept the file upload
+- ImageKit to host and serve the uploaded image
+- MongoDB to store the resulting image URL on the Car document
+
+---
+
+## Deployment
+Vercel configurations are included as follows for online deployment:
+- client/vercel.json
+- server/vercel.json
+
+For deployment, set environment variables in Vercel for both projects, after which the client must be pointed at the deployed server base URL via VITE_BASE_URL.
+
+<div align="center"> <img src="Aero-Car-Renting-Marketplace/client/src/assets/main_car.png" alt="Aero Car" width="800" /> </div>
